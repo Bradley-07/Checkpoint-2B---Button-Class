@@ -1,21 +1,41 @@
-void setup(){
-  
-  size(800,800);
-  
+color red = #c1121f;
+color blue = #8ecae6;
+color green = #57cc99;
+color pink = #e5989b;
+color yellow = #ffe45e;
+color black = #000000;
+color white = #FFFFFF;
+
+boolean mouseReleased;
+boolean wasPressed;
+
+button[] myButton;
+
+color COLOR;
+
+void setup() {
+  size(800, 800);
+ strokeWeight(5);
+ COLOR = white;
+  myButton = new button[5];
+  myButton[0] = new button("Red", 100,100,150,150, red, blue);
+    myButton[1] = new button("Blue", 100,300,150,150, blue,black);
+    myButton[2] = new button("Green", 100,500,150,150, green,red);
+    myButton[3] = new button("Black", 100,700,150,150, black, white);
+    myButton[4] = new button("Pink", 600,200,300,300, pink, yellow);
 }
 
-void draw(){
-  strokeWeight(5);
-  fill(red);
-  rect(100, 30, 150, 150);
+void draw() {
+  click();
   
-  fill(blue);
-  rect(100, 200, 150, 150);
+background(COLOR);
   
-  fill(green);
-  rect(100, 370, 150, 150);
+for(int i = 0; i<5;i++){
+  myButton[i].show();
+ 
+  if(myButton[i].clicked){
+  COLOR = myButton[i].normal;
+  }
   
-  fill(pink);
-  rect(100, 540, 250, 250);
-  
+}
 }
